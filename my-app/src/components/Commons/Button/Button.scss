@@ -1,0 +1,27 @@
+.container__button {
+
+
+    .button__primereact {
+        display: flex;
+        padding: 14px;
+        font-size: 16px;
+        background-color: rgba(0, 186, 136, 1);
+        color: white;
+        border-radius: 10px;
+        border: none;
+
+        &.button__primereact:hover {
+            outline: 1px solid rgba(0, 186, 136, 1);
+            color: rgba(0, 186, 136, 1);
+            background-color: white;
+            transition: 0.5s;
+        }
+
+        span:not(.p-button-label) {
+            margin-right: 20px;
+            margin-top: 3px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+    }
+}

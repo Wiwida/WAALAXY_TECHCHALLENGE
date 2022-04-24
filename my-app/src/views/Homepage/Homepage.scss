@@ -1,0 +1,16 @@
+.container__homepage {
+    margin-top: 96px;
+    padding: 34px 24px;
+
+    .homepage__header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .homepage__h2 {
+            display: inline;
+            font-size: 48px;
+            margin-right: 66px;
+        }
+    }
+}
