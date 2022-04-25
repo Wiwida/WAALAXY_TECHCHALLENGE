@@ -1,4 +1,5 @@
 export interface Product {
+    _id: string,
     name: string,
     description: string,
     image: string,
@@ -12,8 +13,9 @@ export interface Items {
 }
 
 export interface ProductsState {
-    productClicked: Product,
     products: Product[],
+    count: number,
+    productClicked: Product,
     loading: boolean,
     error?: string | null,
 }

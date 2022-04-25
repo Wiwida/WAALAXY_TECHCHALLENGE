@@ -1,9 +1,12 @@
 import { Product, ProductsState } from "../models/redux-models";
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
+import { productsActions } from './products-action';
 
 const initialProductsState: ProductsState = {
     products: [],
+    count: 0,
     productClicked: {
+        _id: "",
         name: "",
         description: "",
         image: "",
@@ -21,11 +24,14 @@ const productsSlice = createSlice({
 
     reducers:{
         setProducts(state, action:PayloadAction<Product[]>){
-            state.products=action.payload;
+            console.log(action.payload)
+            state.products = action.payload;
         },
 
         setParticularProduct(state, action:PayloadAction<Product>){
-            state.productClicked=action.payload;
+            state.productClicked = action.payload;
         }
     }
 });
+
+export default productsSlice;
