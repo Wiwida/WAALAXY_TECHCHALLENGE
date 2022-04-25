@@ -3,11 +3,16 @@ export interface Product {
     description: string,
     image: string,
     price: number,
-    tags: Array<string>,
+    tags: Items[],
 };
 
+export interface Items {
+    description: string, 
+    required: boolean
+}
+
 export interface ProductsState {
-    productClicked: Array<object>,
+    productClicked: Product,
     products: Product[],
     loading: boolean,
     error?: string | null,

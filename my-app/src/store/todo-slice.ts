@@ -3,7 +3,13 @@ import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 
 const initialProductsState: ProductsState = {
     products: [],
-    productClicked: [],
+    productClicked: {
+        name: "",
+        description: "",
+        image: "",
+        price: 0,
+        tags: []
+    },
     loading: false,
     error: null,
 };
@@ -17,7 +23,8 @@ const productsSlice = createSlice({
         setProducts(state, action:PayloadAction<Product[]>){
             state.products=action.payload;
         },
-        setParticularProduct(state, action:PayloadAction<Array<object>>){
+
+        setParticularProduct(state, action:PayloadAction<Product>){
             state.productClicked=action.payload;
         }
     }
