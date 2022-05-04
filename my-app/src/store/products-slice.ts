@@ -1,6 +1,5 @@
 import { ProductsState, OneProduct } from '../models/redux-models';
-import { createSlice, PayloadAction, isPending } from '@reduxjs/toolkit';
-import { fetchProducts } from './products-action';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 // Initialize state :
 const initialProductsState: ProductsState = {
@@ -45,12 +44,6 @@ const productsSlice = createSlice({
             state.products.push(action.payload.product);
         },
     },
-
-    // extraReducers: (builder) => {
-    //     builder.addMatcher(fetchProducts.pending, (state, action) => {
-
-    //     })
-    // }
 });
 
 export default productsSlice;
