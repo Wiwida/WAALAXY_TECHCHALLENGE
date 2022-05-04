@@ -1,27 +1,30 @@
 .container__button {
-
-
-    .button__primereact {
+    
+    .button__gnl {
         display: flex;
-        padding: 14px;
+        padding: 14px 32px;
         font-size: 16px;
         background-color: rgba(0, 186, 136, 1);
         color: white;
+        font-family: 'Helvetica';
+        font-weight: bold;
         border-radius: 10px;
         border: none;
-
-        &.button__primereact:hover {
+        position: relative;
+        cursor: pointer;
+        
+        &.button__gnl:hover {
             outline: 1px solid rgba(0, 186, 136, 1);
             color: rgba(0, 186, 136, 1);
             background-color: white;
             transition: 0.5s;
         }
 
-        span:not(.p-button-label) {
-            margin-right: 20px;
-            margin-top: 3px;
+        i {
             font-weight: bold;
             font-size: 12px;
+            margin-right: 16px;
+            margin-top: 3px;
         }
     }
 }

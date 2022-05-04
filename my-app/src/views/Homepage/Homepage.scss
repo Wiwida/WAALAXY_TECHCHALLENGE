@@ -1,6 +1,9 @@
 .container__homepage {
+    width: 1440px;
+    padding: 34px 150px;
+    margin: auto;
     margin-top: 96px;
-    padding: 34px 24px;
+    min-height: 50vh;
 
     .homepage__header {
         width: 100%;
@@ -12,5 +15,11 @@
             font-size: 48px;
             margin-right: 66px;
         }
+    }
+
+    .homepage__content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 }

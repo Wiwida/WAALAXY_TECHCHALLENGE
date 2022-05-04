@@ -9,14 +9,72 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Helvetica';
+  src:url('../../assets//fonts/helvetica/HelveticaNeue Regular.ttf') format('ttf'),
+      url('../../assets//fonts/helvetica/HelveticaNeuBold.ttf') format('ttf'),
+      url('../../assets//fonts/helvetica/HelveticaNeueMedium.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 *, ::before, ::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  background-color: #F8F9FB;
+  font-family: 'Helvetica';
+  overflow-y: scroll;
+}
+
 .app {
   position: relative;
   max-width: 1440px;
   margin: auto;
+}
+
+.app__main {
+  position: relative;
+}
+
+a:link { 
+ text-decoration:none; 
+} 
+
+/* Transition */
+
+.fade-enter {
+  opacity: 0;
+  transform: translate(0, 25px);
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+
+  transition: opacity 800ms ease-out, transform 900ms ease;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transform: translate(0, 30px);
+
+  transition: opacity 800ms ease-out, transform 900ms ease;
+}
+
+::-webkit-scrollbar {
+  position: absolute;
+  background: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.452);
+  border-radius: 10px;
 }

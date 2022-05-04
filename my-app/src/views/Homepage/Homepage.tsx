@@ -1,54 +1,73 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
+// Hooks :
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
-import { fetchProducts, fetchParticularProduct } from '../../store/products-action';
-import { useState, useEffect } from 'react';
+import { fetchProducts } from '../../store/products-action';
+import { useEffect, useState } from 'react';
 
 // Components : 
-import Aboutproduct from '../../components/Aboutproduct/Aboutproduct';
-import Searchbar from '../../components/Searchbar/Searchbar';
+import Cardproduct from "../../components/Commons/Cardproduct/Cardproduct";
+import Searchbar from '../../components/Commons/Searchbar/Searchbar';
 
 // Style : 
 import './Homepage.scss';
+import Loader from "../../components/Commons/Loader/Loader";
 
 const Homepage = () => {
 
-    const [product_id, setProduct_id] = useState(0);
+    //Hooks :
     const dispatch = useAppDispatch();
     const allProducts = useAppSelector(state => state.products.products);
-    let products;
-
-    dispatch(fetchProducts())
-
-    const checkProducts = () : boolean => {
-        if (allProducts.length === 0) {
-            return false;
-        } 
-
-        return true;
-    }
-
+    const countOfProduct = useAppSelector(state => state.products.count);
+    const isLoading = useAppSelector(state => state.products.loading)
 
     
 
+    // Local State :
+    const [valueInputSearch, setValueInputSearch] = useState('');
+
+    // Search :
+    const productFiltered = allProducts.filter(el => el.name.toLowerCase().startsWith(valueInputSearch.toLowerCase()));
+
+    // Initialize :
+    useEffect(() => {
+        dispatch(fetchProducts(`?&count=${countOfProduct}`));
+    }, [dispatch, countOfProduct]);
+
+    // Loading :
+    const checkProducts = () : boolean => {
+        if (allProducts.length === 0) {
+            return false;
+        }; 
+
+        return true;
+    };
+
     return (
-
-        <div className="container__homepage">
-            <div className="homepage__header">
-                <h2 className="homepage__h2">Welcome!</h2>
-                <Searchbar/>
-
-
+        
+            <div className="container__homepage">
+                <div className="homepage__header">
+                    <h2 className="homepage__h2">Welcome!</h2>
+                    <Searchbar valueInputSearch={valueInputSearch} setValueInputSearch={setValueInputSearch}/>
+                </div>
+                <div className="homepage__content">
+                    {checkProducts() 
+                    
+                        ? productFiltered.map((product) => (
+                            <Cardproduct 
+                                description={product.description} 
+                                _id={product._id} 
+                                name={product.name} 
+                                image={product.image} 
+                                price={product.price}
+                                tags={product.tags}
+                                key={product._id}
+                            />
+                        ))
+                        : <Loader/>
+                    }
+                </div>
             </div>
-            <div className="homepage__content">
-                {checkProducts() && allProducts.map((product) => (
-                    <div id={product._id}></div>
-                ))}
-            </div>
-        </div>
-
     );
 
 };
 
 export default Homepage;
-

@@ -1,16 +1,14 @@
+// Components : 
+import Buttonfoodaawa from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
+
 // Style + assets :
 import './Nav.scss';
 import logo from "../../../assets/img/logo.svg";
 
-// Components : 
-import Buttonfoodaawa from '../Button/Button';
-
 const Nav = () => {
 
-    const actionAddProduct = () => {
-        console.log('Heyyyyy')
-        return 
-    }
+    const navigate = useNavigate();
 
     return (
 
@@ -18,13 +16,13 @@ const Nav = () => {
             <div className="wrapper">
                 <div className="nav__logo">
                     <img className="nav__logo--img" alt="Logo carrot of FOODAWAA" src={logo}/>
-                    <h1 className="nav__logo--title">FOOD<span>AWAA</span></h1>
+                    <h1 className="nav__logo--title" onClick={() => navigate('/')}>FOOD<span>AWAA</span></h1>
                 </div>
                 <div className="nav__link">
                     <i className="pi pi-home"></i>
-                    <a href="/" className="nav__link--text">Catalogue produits</a>
+                    <span className="nav__link--text" onClick={() => navigate('/')}>Catalogue produits</span>
                 </div>
-                <Buttonfoodaawa label="Ajouter un produit" icon="pi pi-plus" actionAfterClick={actionAddProduct}/>
+                <Buttonfoodaawa nameButton="Ajouter un produit" icon="pi pi-plus" actionAfterClick={() => navigate('/products/create')}/>
             </div>
 
         </div>

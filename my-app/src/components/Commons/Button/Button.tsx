@@ -1,18 +1,18 @@
+import { ButtonProps } from '../../../models/redux-models';
+
+// Style :
 import './Button.scss';
-import { Button } from 'primereact/button';
 
-interface ButtonProps {
-    label: string,
-    icon : string,
-    actionAfterClick: any,
-}
-
-const Buttonfoodaawa = ({ label, icon, actionAfterClick }: ButtonProps) => {
+const Buttonfoodaawa = ({ nameButton, icon, typeButton, actionAfterClick }: ButtonProps) => {
 
     return (
 
         <div className="container__button">
-            <Button label={label} icon={icon} className="button__primereact" onClick={actionAfterClick}/>
+            
+            <button type={typeButton} className="button__gnl" onClick={() => actionAfterClick()}>
+                <i className={`${icon}`} />
+                {nameButton}
+            </button>
         </div>
 
     );

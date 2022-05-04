@@ -1,0 +1,15 @@
+.container__tag {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin: 0 12px 0 0;
+    padding: 3px 15px;
+    border-radius: 50px;
+
+    i {
+        font-size: 12px;
+        margin-left: 10px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
